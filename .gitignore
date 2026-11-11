@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Secrets and local runtime data
+firmware/**/secrets.h
+m1/data/
+
+# Local T3 test data (databases, caches, worktrees)
+m1/t3home/
+m0/t3home/
+m0/t3-server.log
+
+# Downloaded reference video (not source)
+video_dl/
+
+# Nested sandbox repos used for agent tests
+m0/sandbox-repo/
+m1/sandbox-repo/
+
+# Firmware build output
+build/
+*.bin
+*.elf
+
+# OS and editor files
+.DS_Store
+.AppleDouble
+*.swp
+.idea/
+.vscode/

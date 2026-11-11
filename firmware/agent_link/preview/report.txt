@@ -1,0 +1,22 @@
+Layout checks: all clean
+
+Steady-state load at 20 MHz SPI (60 s unless noted)
+home idle                              5759 B/s  SPI    2.6 ms/s ( 0.3%)  draws   2.1/s  longest flush slice  2210 us
+wifi joining                           6884 B/s  SPI    3.2 ms/s ( 0.3%)  draws   5.6/s  longest flush slice  1714 us
+offline (searching)                   11004 B/s  SPI    5.1 ms/s ( 0.5%)  draws   6.8/s  longest flush slice  2985 us
+working                                7251 B/s  SPI    3.4 ms/s ( 0.3%)  draws   6.8/s  longest flush slice  1684 us
+approval waiting (static)              1331 B/s  SPI    0.6 ms/s ( 0.1%)  draws   0.9/s  longest flush slice   674 us
+laptop-only request (static)           1433 B/s  SPI    0.6 ms/s ( 0.1%)  draws   0.9/s  longest flush slice   674 us
+done with answer (static)              1246 B/s  SPI    0.6 ms/s ( 0.1%)  draws   1.8/s  longest flush slice   835 us
+approval hold ring (1.5 s)            27879 B/s  SPI   13.3 ms/s ( 1.3%)  draws  26.6/s  longest flush slice   834 us
+home hold ring (0.8 s)                45892 B/s  SPI   21.6 ms/s ( 2.2%)  draws  24.9/s  longest flush slice  1230 us
+
+Screen changes (one-off)
+home -> working                      70144 B  (60.9% of a full frame)  SPI  29.9 ms
+working -> approval                  76800 B  (66.7% of a full frame)  SPI  32.3 ms
+approval -> sending                  83456 B  (72.4% of a full frame)  SPI  34.8 ms
+sending -> approved                  24320 B  (21.1% of a full frame)  SPI  10.6 ms
+approved -> home                     31232 B  (27.1% of a full frame)  SPI  13.4 ms
+working -> done                      66816 B  (58.0% of a full frame)  SPI  28.3 ms
+home -> next preset                  13056 B  (11.3% of a full frame)  SPI   5.5 ms
+offline -> home                      57600 B  (50.0% of a full frame)  SPI  25.1 ms

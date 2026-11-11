@@ -1,0 +1,27 @@
+[
+  {
+    "id": "claude-sandbox",
+    "name": "Claude Code",
+    "icon": "C",
+    "harness": "claudeAgent",
+    "model": "claude-haiku-5-5",
+    "project": "sandbox-repo",
+    "presets": [
+      { "label": "List files", "prompt": "Use your shell tool to run `ls`, then give a one-line summary of the repo." },
+      { "label": "Create note", "prompt": "Use your shell tool to run `touch note-from-device.txt`, then stop." },
+      { "label": "Delete note", "prompt": "Use your shell tool to run `rm note-from-device.txt`, then stop. If declined, do not retry." }
+    ]
+  },
+  {
+    "id": "codex-sandbox",
+    "name": "Codex",
+    "icon": "X",
+    "harness": "codex",
+    "model": "gpt-6-luna",
+    "project": "sandbox-repo",
+    "presets": [
+      { "label": "List files", "prompt": "Use your shell tool to run `ls`, then give a one-line summary of the repo." },
+      { "label": "Create note", "prompt": "Use your shell tool to run `touch codex-note.txt`, then stop." }
+    ]
+  }
+]

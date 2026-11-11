@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Device Simulator</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Device simulator</h1>
+  <p id="link" class="link" role="status">Connecting…</p>
+</header>
+<main class="bench">
+  <section class="rig" aria-label="Simulated device">
+    <div class="shell" id="shell">
+      <button class="side a" id="btnA" type="button" aria-label="Button A: select or approve">A</button>
+      <button class="side b" id="btnB" type="button" aria-label="Button B: back or deny">B</button>
+      <div class="screen" id="screen"></div>
+    </div>
+    <p class="hint">A selects or approves. B goes back or denies.</p>
+    <p class="buzz" id="buzz" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="phone" aria-label="Simulated phone app">
+    <h2>Phone app</h2>
+    <h3>Needs phone</h3>
+    <div id="queue" class="queue"></div>
+    <h3>Voice input (simulated)</h3>
+    <form id="voice" class="voice">
+      <label for="voiceText">What you said</label>
+      <textarea id="voiceText" rows="2" maxlength="2000" placeholder="Type what you would say"></textarea>
+      <button type="submit">Send to device for confirmation</button>
+    </form>
+    <h3>Activity log</h3>
+    <ol id="activity" class="activity"></ol>
+  </section>
+
+  <section class="wire" aria-label="Protocol messages">
+    <h2>Bluetooth messages</h2>
+    <ol id="wire"></ol>
+  </section>
+</main>
+<script src="/app.js" type="module"></script>
+</body>
+</html>

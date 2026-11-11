@@ -1,0 +1,30 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "device-simulator",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "m1/scripts/dev.mjs"
+      ],
+      "port": 3918
+    },
+    {
+      "name": "agent-link",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/jagathsrujan/tomagachi/m1/scripts/link.mjs"
+      ],
+      "port": 3918
+    },
+    {
+      "name": "agent-link-t3",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/jagathsrujan/tomagachi/m1/scripts/link.mjs",
+        "--t3"
+      ],
+      "port": 3918
+    }
+  ]
+}
