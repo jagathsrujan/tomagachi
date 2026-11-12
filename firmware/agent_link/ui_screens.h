@@ -177,7 +177,7 @@ inline void addFooter(Scene &s, const Model &m, int yLabel, int yHint) {
   char buf[LABEL_CAP + 4];
   snprintf(buf, sizeof buf, "> %s", m.presets[m.presetIndex].label);
   addText(s, keep(s, buf), SZ_1, 1, yLabel, yLabel + 8, CYAN, false, false);
-  addText(s, m.presetCount > 1 ? "Tap: next   Hold: start" : "Hold: start", SZ_1, 1, yHint, yHint + 8, SUB, false, false);
+  addText(s, m.presetCount > 1 ? (m.hasDial ? "Turn: pick  Hold: start" : "Tap: next   Hold: start") : "Hold: start", SZ_1, 1, yHint, yHint + 8, SUB, false, false);
 }
 
 inline void buildScene(Scene &s, const Model &m, uint32_t now) {
@@ -212,7 +212,7 @@ inline void buildScene(Scene &s, const Model &m, uint32_t now) {
         addText(s, keep(s, m.presets[m.presetIndex].label), SZ_321, 3, 116, 146, TEXT);
         if (m.presetCount > 1) {
           s.pager = true; s.pagerN = m.presetCount; s.pagerI = m.presetIndex; s.pagerY = 154;
-          addText(s, "Tap: next", SZ_2, 1, 162, 178, SUB, false, false);
+          addText(s, m.hasDial ? "Turn: pick" : "Tap: next", SZ_2, 1, 162, 178, SUB, false, false);
         }
         addText(s, "Hold: start", SZ_2, 1, m.presetCount > 1 ? 180 : 170, m.presetCount > 1 ? 196 : 186, SUB, false, false);
       } else {

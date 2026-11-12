@@ -37,6 +37,7 @@ struct Model {
 
   Preset presets[MAX_PRESETS];
   uint8_t presetCount = 0, presetIndex = 0;
+  bool hasDial = false;  // a thumbwheel picks the preset, so hints say "Turn" instead of "Tap"
 
   TaskState taskState = TS_NONE;
   bool needsLaptop = false;  // the task is waiting on something the device cannot answer

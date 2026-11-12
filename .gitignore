@@ -28,3 +28,6 @@ build/
 *.swp
 .idea/
 .vscode/
+
+# FreeCAD auto-backups
+*.FCBak

@@ -43,6 +43,9 @@ Version 1 = ESP32-S3 board links straight to the laptop over Wi-Fi (no phone). T
 - Whether to start a git repo (recommended, see report; nested repos `m0/sandbox-repo` and `m1/sandbox-repo` exist).
 
 ## Log
+- 2026-11-12: thumbwheel added. CAD: 9 mm pot in the back shell at the neck, 21 mm wheel through the right side wall (`cad/README.md`). Firmware `agent_link`: new `ui_dial.h`, `pollDial()` reads the pot on GPIO 1 and sets the preset selection; hints read "Turn: pick" when `DIAL_ENABLED` is 1 (`pins.h`). The wheel never answers approvals. **Not compiled and not run**: no arduino-cli or g++ on this Windows machine. Only a JavaScript copy of the zone logic was simulated. With no pot wired, set `DIAL_ENABLED 0` or the floating pin will move the selection. The preview check (`preview/run.sh`) was not re-run.
+- 2026-11-12: handheld shell v1 modelled in FreeCAD (`cad/`, see `cad/README.md` for wiring and assembly). Round head, 3 Outemu keys, pinned DevKitC, USB only, M3 inserts. The script's own check reports valid solids and 0 clashes against stand-in parts. Not printed; all part sizes are unmeasured guesses. Key pins 9/10/11 and amp pins 15/16/17 are proposals, not in firmware.
+- 2026-11-12: keycaps added (`cad/keycap.py`, Talk bar / Approve dome / Deny dish, 17.6 mm square, socket from the measured stem +0.08 per side). `remote_v1.py` places them; its check reports 0 clashes at rest and at 4 mm full press against stand-ins, and against the real switch STEP (tightest gap 0.10 mm pressed). STLs in `cad/out/`. Not printed; fit unverified.
 - 2026-11-07: mic wired and tested; testing stopped with the noise unresolved.
 - 2026-11-07: first hardware run of the Wi-Fi link passed; see `M2_RESULTS.md`.
 - 2026-11-07: the board character is now the kangaroo from `firmware/kangaroo_animation`, drawn in `firmware/agent_link/ui_face.h`; compiles and passes the preview checks, not yet run on hardware.

@@ -14,6 +14,7 @@
 #include "pins.h"
 #include "secrets.h"
 #include "ui_engine.h"
+#include "ui_dial.h"
 
 // Set to 1 to print frame and SPI figures once a second over Serial (for measuring on the board).
 #ifndef UI_STATS
@@ -46,6 +47,7 @@ bool linked = false;
 uint32_t lastHeard = 0, lastAttempt = 0;
 int refCounter = 0;
 
+ui::Dial dial;
 bool buttonDown = false, holdFired = false;
 uint32_t pressedAt = 0;
 bool dirty = true;
@@ -327,6 +329,25 @@ void pollButton() {
   M.pressedAt = pressedAt;
 }
 
+// The thumbwheel only moves the preset selection, like a watch crown scrolling a list.
+// It never answers an approval: approve and deny stay on the button (hold and tap).
+void pollDial() {
+#if DIAL_ENABLED
+  static uint32_t last = 0;
+  uint32_t now = millis();
+  if (now - last < 20) return;
+  last = now;
+  int raw = analogRead(PIN_DIAL);
+#if DIAL_REVERSED
+  raw = 4095 - raw;
+#endif
+  int index = dial.update(raw, M.presetCount);
+  if (index < 0 || index == M.presetIndex) return;
+  M.presetIndex = index;
+  dirty = true;
+#endif
+}
+
 void pollSerial() {
   while (Serial.available()) {
     char c = Serial.read();
@@ -388,6 +409,7 @@ void setup() {
   canvas->flush();
   ui::Hooks hooks = {hookMicros, hookRandom, hookSend};
   engine.begin(canvas->getFramebuffer(), hooks);
+  M.hasDial = DIAL_ENABLED;
   ui::put(M.ssid, sizeof M.ssid, WIFI_SSID);
   WiFi.mode(WIFI_STA);
   WiFi.setAutoReconnect(true);
@@ -397,6 +419,7 @@ void setup() {
 void loop() {
   pollLink();
   pollButton();
+  pollDial();
   pollSerial();
   if (dirty) {
     dirty = false;
